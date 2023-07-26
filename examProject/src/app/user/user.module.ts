@@ -1,13 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
-
-const routes: Routes = [
-  { path: 'sign-in', component: SignInComponent},
-  { path: 'sign-up', component: SignUpComponent}
-];
+import { UserRoutingModule } from './user-routing-module';
+import { FirebaseService } from '../services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +11,17 @@ const routes: Routes = [
     SignInComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    UserRoutingModule,
+
+  ],
+  exports: [
+    SignInComponent,
+    SignUpComponent
+  ],
 })
-export class UserModule { }
+export class UserModule {   
+
+
+}
+
