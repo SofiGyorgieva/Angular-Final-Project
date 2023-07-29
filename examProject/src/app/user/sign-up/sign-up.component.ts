@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class SignUpComponent {
   isSignedIn = false
-  constructor(public firebaseService: FirebaseService) {  }
+  constructor(public firebaseService: FirebaseService, public router: Router) {  }
 
   ngOnInit(): void {
       if(localStorage.getItem('user') !== null)
@@ -20,14 +21,10 @@ export class SignUpComponent {
   async onSignup(email: string, password: string){
     console.log(email, password)
     await this.firebaseService.signup(email, password)
-    this.firebaseService.
-    if(this.firebaseService.isLoggedIn)
-    this.isSignedIn = true
+    if(this.firebaseService.isLoggedIn) {
+      this.isSignedIn = true
+      this.router.navigate(['/']);
+    }
   }
 
-  async onSignin(email: string, password: string){
-    await this.firebaseService.signin(email, password)
-    if(this.firebaseService.isLoggedIn)
-    this.isSignedIn = true
-  }
 }

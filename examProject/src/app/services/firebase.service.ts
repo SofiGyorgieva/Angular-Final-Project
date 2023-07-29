@@ -6,6 +6,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 
 export class FirebaseService {
+  if(isLoggedIn: boolean) {
+    throw new Error('Method not implemented.');
+  }
 
   isLoggedIn = false
 
@@ -29,6 +32,7 @@ export class FirebaseService {
 
   signout(){
     this.firebaseAuth.signOut()
+    this.isLoggedIn = false;
     localStorage.removeItem('user')
   }
 }

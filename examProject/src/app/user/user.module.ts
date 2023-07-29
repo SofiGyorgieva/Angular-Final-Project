@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UserRoutingModule } from './user-routing-module';
-import { FirebaseService } from '../services/firebase.service';
+import { SignOutComponent } from './sign-out/sign-out.component';
 
 @NgModule({
   declarations: [
     SignUpComponent,
     SignInComponent,
+    SignOutComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { FirebaseService } from '../services/firebase.service';
   ],
   exports: [
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    SignOutComponent,
   ],
 })
 export class UserModule {   
