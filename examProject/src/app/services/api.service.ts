@@ -10,18 +10,12 @@ export class ApiService {
 
   constructor() {  }
 
-  getRecipes() {
+  async getRecipes() {
     let app = initializeApp(environment.firebaseConfig);
     let db = getDatabase(app);
     let reegef = ref(db, '/recipes');
-    console.log('getReciepesLog')
-    onValue(reegef, (snapshot) => {
-      console.log('getReciepesLog1')
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-      } else {
-        console.log("No data available");
-      }
-    })
+    const snapshot = await get(reegef)
+    const data = snapshot.val();
+    return data;
   }
 }
