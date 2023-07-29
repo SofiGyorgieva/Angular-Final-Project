@@ -14,7 +14,7 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit(): void {
    this.apiService.getRecipes().then(res => {
-      console.log(this.fetchedData = res)
+      this.fetchedData = res
    })
   }
 }

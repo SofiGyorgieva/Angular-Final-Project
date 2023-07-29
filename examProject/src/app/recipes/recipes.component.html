@@ -1,1 +1,10 @@
-<div>{{fetchedData}}</div>
+<div *ngFor="let recipe of fetchedData">
+    <h3>{{recipe.name}}</h3>
+    <br/>
+    <ul>
+    <li>Category: {{recipe.category}}</li>
+    <li>Garnish: {{recipe.garnish}}</li>
+    <li>Glass: {{recipe.glass}}</li>
+    <li>Preparation: {{recipe.preparation}}</li>
+    </ul>
+</div>
