@@ -3,7 +3,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #201E20;
+    background-color: transparent;
     position: sticky;
   }
   
@@ -29,6 +29,10 @@ ul {
   li a:hover {
     background-color: #DDC3A5;
     color: #201E20;
+  }
+
+  .logo-image {
+    background-image: url('../../../assets/logo.png');  
   }
 
 

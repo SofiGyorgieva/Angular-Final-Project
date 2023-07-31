@@ -1,0 +1,8 @@
+.home-container {
+    background-image: url('../../assets/louis-hansel-yLUvnCFI500-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Set an appropriate height for the home page container */
+
+    opacity: 0.7;
+  }

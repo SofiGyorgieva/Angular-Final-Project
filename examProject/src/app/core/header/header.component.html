@@ -1,12 +1,12 @@
-<ul>
+<ul class="navbar">
     <li><a class="navbar-brand" routerLink="/home">
         <div class="logo-image">
-              <img src="logo.png" class="img-fluid">
+              <img class="img-fluid">
         </div>
     </a></li>
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/recipes">Recipes</a></li>
-    <li *ngIf="isSignedIn" class="user-link"><a routerLink="/sign-out" (click)="onSignout()">Sign Out</a></li>
     <li class="user-link"><a routerLink="/sign-up">Sign Up</a></li>
     <li *ngIf="!isSignedIn" class="user-link"><a routerLink="/sign-in">Sign In</a></li>
+    <li *ngIf="isSignedIn" class="user-link"><a routerLink="/sign-out" (click)="onSignout()">Sign Out</a></li>
 </ul>

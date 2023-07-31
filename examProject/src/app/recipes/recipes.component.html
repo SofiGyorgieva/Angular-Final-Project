@@ -1,10 +1,15 @@
-<div *ngFor="let recipe of fetchedData">
-    <h3>{{recipe.name}}</h3>
-    <br/>
-    <ul>
-    <li>Category: {{recipe.category}}</li>
-    <li>Garnish: {{recipe.garnish}}</li>
-    <li>Glass: {{recipe.glass}}</li>
-    <li>Preparation: {{recipe.preparation}}</li>
-    </ul>
-</div>
+
+<div class="card-container" *ngFor="let recipe of fetchedData">
+    <div class="card u-clearfix">
+      <div class="card-body">
+        <span class="card-number card-circle subtle">01</span>
+        <span class="card-author subtle">John</span>
+        <h2 class="card-title">{{recipe.name}}</h2>
+        <span class="card-description subtle">{{recipe.category}}</span>
+        <div class="card-read">Read</div>
+        <span class="card-tag card-circle subtle">C</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1601887573188-79fb3c767157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGNvY2t0YWlsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="" class="card-media" />
+    </div>
+    <div class="card-shadow"></div>
+  </div>
