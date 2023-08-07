@@ -1,8 +1,9 @@
 .home-container {
+    background-color: transparent;
     background-image: url('../../assets/louis-hansel-yLUvnCFI500-unsplash.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.7));
     background-size: cover;
     background-position: center;
     height: 100vh; /* Set an appropriate height for the home page container */
-
-    opacity: 0.7;
+    opacity: 0.6
   }

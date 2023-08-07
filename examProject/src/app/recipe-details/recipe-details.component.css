@@ -1,0 +1,31 @@
+.content {
+    font-family: Arial, sans-serif;
+  }
+  .recipe-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .recipe-card h2 {
+    margin-bottom: 10px;
+  }
+  .recipe-card p {
+    margin-bottom: 5px;
+  }
+  .recipe-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .recipe-card li {
+    margin-bottom: 5px;
+  }
+
+  .card-media {
+    float: right;
+    max-width: 100%; /* Limits the image width to the width of its container */
+    max-height: 250px; /* Limits the image height to a specific value, e.g., 200 pixels */
+    object-fit: cover;
+  }

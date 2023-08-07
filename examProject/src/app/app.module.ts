@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component'
 
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,8 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     AngularFireAuthModule,
     UserModule,
     HttpClientModule,
+    MatDialogModule,
+    
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

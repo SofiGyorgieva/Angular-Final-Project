@@ -1,1 +1,13 @@
-<p>recipe-details works!</p>
+<div class="content" *ngIf="this.item">
+    <div class="recipe-card">
+        <h2>Recipe Details</h2>
+        <img src="https://images.unsplash.com/photo-1601887573188-79fb3c767157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGNvY2t0YWlsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60">
+        <p><strong>Name:</strong> <span> {{this.item.name}}</span></p>
+        <p><strong>Category:</strong></p>
+        <p>{{this.item.category}}</p>
+        <p><strong>Ingredients:</strong></p>
+        <ul>{{this.item.ingredients}}</ul>
+        <p><strong>Instructions:</strong></p>
+        <ol>{{this.item.preparation}}</ol>
+    </div>
+</div>

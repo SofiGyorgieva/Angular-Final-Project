@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getDatabase, ref, get, set, onValue, child } from '@firebase/database';
+import { getDatabase, ref, get, set, onValue, child, query, orderByChild, equalTo } from '@firebase/database';
 import { initializeApp } from '@firebase/app';
 import { environment } from 'src/environments/environment';
 
@@ -13,15 +13,15 @@ export class ApiService {
   constructor() {  }
 
   async getRecipes() {
-    let reegef = ref(this.db, '/recipes');
-    const snapshot = await get(reegef)
+    let reference = ref(this.db, '/recipes');
+    const snapshot = await get(reference)
     const data = snapshot.val();
     return data;
   }
 
-  async getRecipeDetails(id: string) {
-    let reegef = ref(this.db, `/recipes/${id}`);
-    const snapshot = await get(reegef)
+  async getRecipeDetails(id: string | null) {
+    const myOffersRef = query(ref(this.db, 'recipes'), orderByChild('_id'), equalTo(id));
+    const snapshot = await get(myOffersRef);
     const data = snapshot.val();
     return data;
   }

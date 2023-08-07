@@ -3,8 +3,9 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: transparent;
+    background-color: #04162b;
     position: sticky;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.19);
   }
   
   li {
@@ -13,7 +14,7 @@ ul {
   
   li a {
     display: block;
-    color: #DDC3A5;
+    color: #D9D1BA;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -27,13 +28,14 @@ ul {
   
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: #DDC3A5;
-    color: #201E20;
+    background-color: #D9D1BA;
+    color: #04162b;
   }
 
   .logo-image {
-    background-image: url('../../../assets/logo.png');  
+    background-image: url('../../../assets/barLogo.png');  
   }
+
 
 
   @media screen and (max-width: 600px) {
