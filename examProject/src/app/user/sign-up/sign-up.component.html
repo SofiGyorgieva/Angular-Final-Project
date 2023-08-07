@@ -1,7 +1,96 @@
-<div>
+<!--<div>
     <h2>Sign up</h2>
     <input type="text" #emailSignup/>
     <input type="text" #passwordSignup/>
     <button (click)="onSignup(emailSignup.value, passwordSignup.value)">Sign up</button>
 
 </div>
+-->
+<!--
+<div>
+    <h2>Sign in</h2>
+    <input type="text" #emailSignin/>
+    <input type="text" #passwordSignin/>
+    <button (click)="onSignin(emailSignin.value, passwordSignin.value)">Sign in</button>
+
+</div> -->
+
+
+ <div class="signup-form">
+    <h2>Sign Up</h2>
+    <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
+     	 <!-- Email input block -->
+         <div class="form-group">
+            <label for="inputEmail" class="col-lg-2
+            control-label">Email</label>
+            <div class="col-lg-7">
+                <input type="text" class = "form-control" 
+                  [(ngModel)] ="user.email"
+                  name="email"
+                  #email = "ngModel" id="inputEmail" 
+                  placeholder="Email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                  required>
+             </div>
+      </div>
+
+      	<!-- Email error block -->
+
+				<div *ngIf="email.invalid && ( email.touched)"
+                class="col-sm-3 text-danger">
+                <div *ngIf = "email.errors?.['required']">
+                    Email field can't be blank
+                </div>
+                <div *ngIf = "email.errors?.['pattern'] && email.touched">
+                    The email id doesn't seem right
+                </div>
+            </div>
+       
+  
+			<!-- Password block -->
+			<div ngModelGroup="password" #userPassword="ngModelGroup" >
+                <div class="form-group ">
+                   <label for="inputPassword" class="col-lg-2 	control-label">Password</label>
+                   <div class="col-lg-7">
+                    <input 
+                       type="password" class="form-control"
+                        [(ngModel)]=user.password
+                        name="pwd"
+                        id="inputPassword" 
+                        placeholder="Password"
+                        minlength ="8" 
+                        required
+                    >
+                    </div>
+                </div>
+            </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          [(ngModel)] ="user.confirmPwd"
+          placeholder="Confirm Password"
+          required
+        />
+      </div>
+            
+         <!-- Password error block -->
+             <div *ngIf="(userPassword.invalid || (userPassword.value?.pwd != userPassword.value?.confirmPwd)) && (userPassword.touched)"
+              class="col-sm-3 text-danger">
+              
+                  <div *ngIf = "userPassword.invalid; else nomatch">
+                      Password needs to be more than 8 characters
+                  </div>
+                  <ng-template #nomatch >
+                    Passwords don't match
+                </ng-template>
+          
+              </div>
+         
+  
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>

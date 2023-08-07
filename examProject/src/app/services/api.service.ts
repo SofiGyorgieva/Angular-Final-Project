@@ -7,13 +7,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
+  app = initializeApp(environment.firebaseConfig);
+  db = getDatabase(this.app);
 
   constructor() {  }
 
   async getRecipes() {
-    let app = initializeApp(environment.firebaseConfig);
-    let db = getDatabase(app);
-    let reegef = ref(db, '/recipes');
+    let reegef = ref(this.db, '/recipes');
+    const snapshot = await get(reegef)
+    const data = snapshot.val();
+    return data;
+  }
+
+  async getRecipeDetails(id: string) {
+    let reegef = ref(this.db, `/recipes/${id}`);
     const snapshot = await get(reegef)
     const data = snapshot.val();
     return data;

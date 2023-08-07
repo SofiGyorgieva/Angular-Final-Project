@@ -15,13 +15,15 @@ import { UserModule } from './user/user.module';
 import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { RecipesComponent } from './recipes/recipes.component'
+import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RecipesComponent
+    RecipesComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,

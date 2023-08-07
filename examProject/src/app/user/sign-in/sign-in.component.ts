@@ -1,7 +1,9 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms'; 
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { FirebaseService } from 'src/app/services/firebase.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -28,13 +30,16 @@ export class SignInComponent implements OnInit {
 
   onSignin(form: any): void {
     if (form.valid) {
-      console.log(this.user.email, this.user.password)
-      this.firebaseService.signin(this.user.email, this.user.password)
+      this.firebaseService.signin(this.user.email, this.user.password);
+      
       if (this.firebaseService.isLoggedIn) {
       this.isSignedIn = true
       this.router.navigate(['/home']);
+        }
       }
-    }
+  }
+      
+} 
     
-  } 
-}
+   
+

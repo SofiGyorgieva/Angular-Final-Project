@@ -8,7 +8,14 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  isSignedIn = false
+  user = {
+    email: '',
+    password: '',
+    confirmPwd: '',
+  }
+
+  isSignedIn = false;
+  
   constructor(public firebaseService: FirebaseService, public router: Router) {  }
 
   ngOnInit(): void {
@@ -18,9 +25,11 @@ export class SignUpComponent {
       this.isSignedIn = false
   }
 
-  async onSignup(email: string, password: string){
-    console.log(email, password)
-    await this.firebaseService.signup(email, password)
+  onSignup(form: any){
+    console.log(this.user.email, this.user.password, this.user.confirmPwd)
+    if (form.valid) {
+      this.firebaseService.signup(this.user.email, this.user.password);
+    }
     if(this.firebaseService.isLoggedIn) {
       this.isSignedIn = true
       this.router.navigate(['/']);
