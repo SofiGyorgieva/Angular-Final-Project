@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { getDatabase, ref, get, set, onValue, child, query, orderByChild, equalTo, update, push } from '@firebase/database';
 import { initializeApp } from '@firebase/app';
 import { environment } from 'src/environments/environment';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class ApiService {
     let reference = ref(this.db, '/recipes');
     const snapshot = await get(reference)
     const data = snapshot.val();
+    console.log(data)
     return data;
   }
 
@@ -28,11 +30,27 @@ export class ApiService {
     return data;
   }
 
+  createRecipe(uid: string, form: any){
+    let id = Math.random().toString(36).substring(2, 8)
+    const data = {
+      _id: id,
+      ...form.value,
+      author: uid
+    }
+
+    console.log(data);
+
+    let updates = {
+      [id]: data
+    }
+    const dbRef = ref(this.db, '/recipes');
+    update(dbRef, updates)
+  }
+
   async createUser(uid: any) {
     const data = {
       uid: uid
     }
-
     let updates = {
       [uid]: data
     }

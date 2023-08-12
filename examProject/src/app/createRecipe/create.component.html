@@ -1,7 +1,7 @@
 <div class="create-form">
     <h2>Create New Recipe</h2>
     <form #createForm="ngForm" (ngSubmit)="onSubmit(createForm)">
-        <!-- Email input block -->
+        <!-- Name input block -->
         <div class="form-group">
             <label for="inputName">Name</label>
             <div class="col-lg-7">
@@ -11,6 +11,9 @@
             <div *ngIf="name.invalid && ( name.touched)" class="col-sm-3 text-danger">
                 <div *ngIf="name.errors?.['required']">
                     Name field can't be blank
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                    Name must be 3 or more characters
                 </div>
             </div>
         </div>
@@ -62,24 +65,56 @@
                 </div>
             </div>
         </div>
+        <!-- Image block -->
+        <div class="form-group">
+            <label for="inputImageUrl">Image Url</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" name="imageUrl" ngModel #imageUrl="ngModel" id="inputImageUrl"
+                    placeholder="Add the Image Url" minlength="10" required>
+            </div>
+            <div *ngIf="imageUrl.invalid && ( imageUrl.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="imageUrl.errors?.['required']">
+                    Image Url field can't be blank
+                </div>
+                <div *ngIf="imageUrl.errors?.['minlength']">
+                    imageUrl must be 10 or more characters
+                </div>
+            </div>
+        </div>
+        <!-- Ingredients block -->
+        <div class="form-group">
+            <label for="inputIngredients">Ingreadients</label>
+            <div class="col-lg-7">
+                <textarea id="ingredients" name="ingredients" ngModel #ingredients="ngModel"
+                    placeholder="Add preparation steps" maxlength="1000" minlength="3" required></textarea>
+            </div>
+            <div *ngIf="ingredients.invalid && ( ingredients.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="ingredients.errors?.['required']">
+                    Ingredients field can't be blank
+                </div>
+                <div *ngIf="ingredients.errors?.['minlength'] || ingredients.errors?.['maxlength']">
+                    Ingredients length must be between 3 - 1000 characters
+                </div>
+            </div>
+        </div>
         <!-- Preparation steps block -->
         <div class="form-group">
             <label for="inputPreparation">Preparation steps</label>
             <div class="col-lg-7">
-                <input type="text" class="form-control" name="preparation" ngModel #preparation="ngModel" id="inputPreparation"
-                    placeholder="Enter the steps needed for preparation" minlength="3" maxlength="300" required>
+                <textarea id="preparation" name="preparation" ngModel #preparation="ngModel"
+                    placeholder="Add preparation steps" maxlength="1000" minlength="3" required></textarea>
             </div>
             <div *ngIf="preparation.invalid && ( preparation.touched)" class="col-sm-3 text-danger">
                 <div *ngIf="preparation.errors?.['required']">
                     Preparation steps field can't be blank
                 </div>
-                <div *ngIf="preparation.errors?.['minlength'] && preparation.errors?.['maxlength']">
-                    Preparation steps length must be between 3 - 300 characters
+                <div *ngIf="preparation.errors?.['minlength'] || preparation.errors?.['maxlength']">
+                    Preparation steps length must be between 3 - 1000 characters
                 </div>
             </div>
         </div>
 
-   
+
 
         <button type="submit">Create Recipe</button>
     </form>
