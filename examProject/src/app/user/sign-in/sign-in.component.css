@@ -1,6 +1,6 @@
+
 .signin-form {
     max-width: 300px;
-    margin: 0 auto;
     padding: 20px;
     border: 1px solid #301a1a;
     border-radius: 5px;
@@ -37,3 +37,8 @@
     cursor: not-allowed;
   }
   
+  .page-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

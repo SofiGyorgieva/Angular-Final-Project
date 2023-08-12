@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserModule } from 'src/app/user/user.module';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -9,17 +11,17 @@ import { UserModule } from 'src/app/user/user.module';
   styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent {
-  isSignedIn = false;
-  constructor(public fbAuth: AngularFireAuth, public userMdl: UserModule, public firebaseService: FirebaseService) {
-  }
+export class HeaderComponent{
+  
+  constructor(
+    public fbAuth: AngularFireAuth, 
+    public userMdl: UserModule, 
+    public firebaseService: FirebaseService, 
+    public router: Router) { }
 
-  async onSignout (){
-    console.log('Signed out!')
-    await this.firebaseService.signout()
-    if(!this.firebaseService.isLoggedIn) {
-      this.isSignedIn = false
-    }
+   onSignout(){
+     this.firebaseService.signout()
+     this.router.navigate(['/home']);
   }
 
 }

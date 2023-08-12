@@ -25,15 +25,17 @@ export class SignUpComponent {
       this.isSignedIn = false
   }
 
-  onSignup(form: any){
-    console.log(this.user.email, this.user.password, this.user.confirmPwd)
-    if (form.valid) {
-      this.firebaseService.signup(this.user.email, this.user.password);
+  async onSignup(form: any){
+    try {
+      if (form.valid) {
+        await this.firebaseService.signup(this.user.email, this.user.password);
+        this.router.navigate(['/']);
+      }
+    } catch (error) {
+      alert(error);
     }
-    if(this.firebaseService.isLoggedIn) {
-      this.isSignedIn = true
-      this.router.navigate(['/']);
-    }
+   
+    
   }
 
 }

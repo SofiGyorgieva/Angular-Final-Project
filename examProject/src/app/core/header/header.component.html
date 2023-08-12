@@ -6,7 +6,9 @@
     </a></li>
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/recipes">Recipes</a></li>
-    <li class="user-link"><a routerLink="/sign-up">Sign Up</a></li>
-    <li *ngIf="!isSignedIn" class="user-link"><a routerLink="/sign-in">Sign In</a></li>
-    <li *ngIf="isSignedIn" class="user-link"><a routerLink="/sign-out" (click)="onSignout()">Sign Out</a></li>
+    <li *ngIf="this.firebaseService.isLoggedIn"><a routerLink="/user/favorites">My favorites</a></li>
+    <li *ngIf="this.firebaseService.isLoggedIn"><a routerLink="/recipes/create">Create Recipe</a></li>
+    <li class="user-link"><a routerLink="/user/sign-up">Sign Up</a></li>
+    <li *ngIf="!this.firebaseService.isLoggedIn" class="user-link"><a routerLink="/user/sign-in">Sign In</a></li>
+    <li *ngIf="this.firebaseService.isLoggedIn" class="user-link"><a routerLink="/user/sign-out" (click)="onSignout()">Sign Out</a></li>
 </ul>

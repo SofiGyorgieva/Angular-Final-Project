@@ -1,10 +1,10 @@
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-<div class="card-container" *ngFor="let recipe of fetchedData" >
+<div class="card-container" *ngFor="let recipe of fetchedData; index as i" >
   <div class="card-shadow">
     <div class="card u-clearfix" >
       <div class="card-body">
-        <span class="card-number card-circle subtle">01</span>
+        <span class="card-number card-circle subtle">{{i}}</span>
         <span class="card-author subtle">John</span>
         <h2 class="card-title">{{recipe.name}}</h2>
         <span class="card-description subtle">{{recipe.category}}</span>

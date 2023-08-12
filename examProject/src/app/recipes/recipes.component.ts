@@ -23,11 +23,10 @@ export class RecipesComponent implements OnInit {
   }
 
   onClick(recipeId: string) {
-    console.log(recipeId);
     this.apiService.getRecipeDetails(recipeId).then(res => {
       let dialogRef = this.dialog.open(RecipeDetailsComponent, {
-        height: '400px',
-        width: '600px',
+        height: '600px',
+        width: '1000px',
         data: {
           item: res
         }

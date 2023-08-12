@@ -19,13 +19,16 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component'
 
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { CreateComponent } from './createRecipe/create.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RecipesComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
     UserModule,
     HttpClientModule,
     MatDialogModule,
-    
+    FormsModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

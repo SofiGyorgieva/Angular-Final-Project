@@ -1,0 +1,86 @@
+<div class="create-form">
+    <h2>Create New Recipe</h2>
+    <form #createForm="ngForm" (ngSubmit)="onSubmit(createForm)">
+        <!-- Email input block -->
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" name="name" ngModel #name="ngModel" id="inputName"
+                    placeholder="Name of cocktail" minlength="3" required>
+            </div>
+            <div *ngIf="name.invalid && ( name.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="name.errors?.['required']">
+                    Name field can't be blank
+                </div>
+            </div>
+        </div>
+        <!-- Category block -->
+        <div class="form-group">
+            <label for="inputCategory">Category</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" name="category" ngModel #category="ngModel" id="inputCategory"
+                    placeholder="Category" minlength="3" required>
+            </div>
+            <div *ngIf="category.invalid && ( category.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="category.errors?.['required']">
+                    Category field can't be blank
+                </div>
+                <div *ngIf="category.errors?.['minlength']">
+                    Category must be 3 or more characters
+                </div>
+            </div>
+        </div>
+        <!-- Garnish block -->
+        <div class="form-group">
+            <label for="inputGarnish">Garnish</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" name="garnish" ngModel #garnish="ngModel" id="inputGarnish"
+                    placeholder="Garnish" minlength="3" required>
+            </div>
+            <div *ngIf="garnish.invalid && ( garnish.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="garnish.errors?.['required']">
+                    Garnish field can't be blank
+                </div>
+                <div *ngIf="garnish.errors?.['minlength']">
+                    Garnish must be 3 or more characters
+                </div>
+            </div>
+        </div>
+        <!-- Glass block -->
+        <div class="form-group">
+            <label for="inputGlass">Glass</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" name="glass" ngModel #glass="ngModel" id="inputGlass"
+                    placeholder="Type of glass for serving" minlength="3" required>
+            </div>
+            <div *ngIf="glass.invalid && ( glass.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="glass.errors?.['required']">
+                    Glass field can't be blank
+                </div>
+                <div *ngIf="glass.errors?.['minlength']">
+                    Glass must be 3 or more characters
+                </div>
+            </div>
+        </div>
+        <!-- Preparation steps block -->
+        <div class="form-group">
+            <label for="inputPreparation">Preparation steps</label>
+            <div class="col-lg-7">
+                <input type="text" class="form-control" name="preparation" ngModel #preparation="ngModel" id="inputPreparation"
+                    placeholder="Enter the steps needed for preparation" minlength="3" maxlength="300" required>
+            </div>
+            <div *ngIf="preparation.invalid && ( preparation.touched)" class="col-sm-3 text-danger">
+                <div *ngIf="preparation.errors?.['required']">
+                    Preparation steps field can't be blank
+                </div>
+                <div *ngIf="preparation.errors?.['minlength'] && preparation.errors?.['maxlength']">
+                    Preparation steps length must be between 3 - 300 characters
+                </div>
+            </div>
+        </div>
+
+   
+
+        <button type="submit">Create Recipe</button>
+    </form>
+</div>

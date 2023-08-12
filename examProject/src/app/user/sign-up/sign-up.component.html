@@ -81,12 +81,9 @@
              <div *ngIf="(userPassword.invalid || (userPassword.value?.pwd != userPassword.value?.confirmPwd)) && (userPassword.touched)"
               class="col-sm-3 text-danger">
               
-                  <div *ngIf = "userPassword.invalid; else nomatch">
+                  <div *ngIf = "userPassword.invalid">
                       Password needs to be more than 8 characters
                   </div>
-                  <ng-template #nomatch >
-                    Passwords don't match
-                </ng-template>
           
               </div>
          
