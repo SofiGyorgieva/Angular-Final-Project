@@ -1,17 +1,17 @@
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <div class="card-container" *ngFor="let recipe of this.recipesArray; index as i" >
+    <div class="card-container" *ngFor="let recipe of this.fetchedData; index as i" >
       <div class="card-shadow">
         <div class="card u-clearfix" >
           <div class="card-body">
             <span class="card-number card-circle subtle">0{{i}}</span>
             <h2 class="card-title">{{recipe.name}}</h2>
             <span class="card-description subtle">{{recipe.category}}</span>
-            <div class="card-read" (click)="onClick(recipe._id)">Read</div>
+            <div class="card-read">Read</div>
           </div>
           <img class="card-media" src="{{recipe.imageUrl}}" alt="" class="card-media" />
         </div>
         <div>
       </div>
     </div>
-    </div>
+</div>

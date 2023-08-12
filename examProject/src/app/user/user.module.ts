@@ -6,6 +6,7 @@ import { UserRoutingModule } from './user-routing-module';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { FormsModule } from '@angular/forms';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     SignInComponent,
     SignOutComponent,
     FavoritesComponent,
+    MyRecipesComponent,
   ],
   imports: [
     CommonModule,

@@ -19,8 +19,8 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component'
 
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { CreateComponent } from './createRecipe/create.component';
 import { FormsModule }   from '@angular/forms';
+import { CreateComponent } from './createRecipe/create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { FormsModule }   from '@angular/forms';
     HomeComponent,
     RecipesComponent,
     RecipeDetailsComponent,
-    CreateComponent
+    CreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RecipeDetailsComponent } from 'src/app/recipe-details/recipe-details.component';
 
 @Component({
   selector: 'app-favorites',
@@ -14,7 +16,7 @@ export class FavoritesComponent implements OnInit {
   recipesArray: any[] = [];
 
 
-  constructor(public firebaseService: FirebaseService, public apiService: ApiService) { }
+  constructor(public firebaseService: FirebaseService, public apiService: ApiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getFavRecipes(this.currentUserId)
@@ -29,6 +31,21 @@ export class FavoritesComponent implements OnInit {
       })
     }
 
-    console.log(this.recipesArray);
   }
+
+  onClick(recipeId: string) {
+    this.apiService.getRecipeDetails(recipeId).then(res => {
+      let dialogRef = this.dialog.open(RecipeDetailsComponent, {
+        height: '600px',
+        width: '1000px',
+        data: {
+          item: res
+        }
+      });
+    }).catch((error) => {
+      console.error(error);
+    });
+
+  }
+
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { RecipeDetailsComponent } from '../recipe-details/recipe-details.component';
 import { MatDialog } from '@angular/material/dialog';
-import { toArray } from 'rxjs';
 
 @Component({
   selector: 'app-recipes',

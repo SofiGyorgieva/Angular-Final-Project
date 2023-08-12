@@ -19,7 +19,7 @@ export class ApiService {
     let reference = ref(this.db, '/recipes');
     const snapshot = await get(reference)
     const data = snapshot.val();
-    console.log(data)
+    //console.log(data)
     return data;
   }
 
@@ -38,7 +38,7 @@ export class ApiService {
       author: uid
     }
 
-    console.log(data);
+    //console.log(data);
 
     let updates = {
       [id]: data
@@ -102,13 +102,29 @@ export class ApiService {
   }
 
   async getUserFavoriteRecipeDetails(uid: string) {
-    const favoritesRef = ref(this.db, `users/${uid}/favorites/`)
-    const userDetails = await get(favoritesRef)
-    const userFavorites = userDetails.val();
+    try {
+      const favoritesRef = ref(this.db, `users/${uid}/favorites/`)
+      const userDetails = await get(favoritesRef)
+      const userFavorites = userDetails.val();
 
-    return userFavorites;
+      return userFavorites;
+    } catch (error) {
+      alert(`Error: ${error}`)
+    }
   }
 
+  async getRecipesByAuthor(uid: string) {
+    try {
+      const userRef = query(ref(this.db, 'recipes'), orderByChild('author'), equalTo(uid));
+      const snapshot = await get(userRef);
+      const data = snapshot.val();
+      //console.log(data);
+      return data;
+    } catch (error) {
+      alert(`Error: ${error}`)
+    }
+
+  }
 
 }
 
