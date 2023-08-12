@@ -7,7 +7,7 @@
             <span class="card-number card-circle subtle">0{{i}}</span>
             <h2 class="card-title">{{recipe.name}}</h2>
             <span class="card-description subtle">{{recipe.category}}</span>
-            <div class="card-read">Read</div>
+            <div class="card-read" (click)="onClick(recipe._id)">Read</div>
           </div>
           <img class="card-media" src="{{recipe.imageUrl}}" alt="" class="card-media" />
         </div>

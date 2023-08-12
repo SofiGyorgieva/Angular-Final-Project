@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { RecipeDetailsComponent } from '../recipe-details/recipe-details.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,27 +12,40 @@ import { MatDialog } from '@angular/material/dialog';
 export class RecipesComponent implements OnInit {
   fetchedData: any;
   item: any;
+  dialogRef: any;
   
-  constructor(public apiService: ApiService, public dialog: MatDialog) { } 
+  constructor(public apiService: ApiService,
+     public dialog: MatDialog,
+     private cdr: ChangeDetectorRef,) { } 
 
 
   ngOnInit(): void {
-   this.apiService.getRecipes().then(res => {
+    this.getAllRecipes();
+  }
+
+  async getAllRecipes(){
+   await this.apiService.getRecipes().then(res => {
       this.fetchedData = Object.keys(res).map(key => ({
         id: key,
         ...res[key]
       }));
-      console.log(this.fetchedData)
    })
   }
 
   onClick(recipeId: string) {
     this.apiService.getRecipeDetails(recipeId).then(res => {
-      let dialogRef = this.dialog.open(RecipeDetailsComponent, {
-        height: '600px',
-        width: '1000px',
+      this.dialogRef = this.dialog.open(RecipeDetailsComponent, {
+        height: 'fit-content',
+        width: 'fit-content',
         data: {
           item: res
+        }
+      });
+      this.dialogRef.afterClosed().subscribe(async (result: any) => {
+        console.log(`Dialog result: ${result}`);
+        if (result === 'deleted'){
+          await this.getAllRecipes();
+          this.cdr.detectChanges(); 
         }
       });
     }).catch((error) => {
@@ -40,6 +53,8 @@ export class RecipesComponent implements OnInit {
     });
 
   }
+
+
 
 }
 

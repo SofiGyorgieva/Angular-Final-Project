@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getDatabase, ref, get, set, onValue, child, query, orderByChild, equalTo, update, push } from '@firebase/database';
+import { getDatabase, ref, get, set, onValue, child, query, orderByChild, equalTo, update, push, remove } from '@firebase/database';
 import { initializeApp } from '@firebase/app';
 import { environment } from 'src/environments/environment';
 import { NgForm } from '@angular/forms';
@@ -124,6 +124,11 @@ export class ApiService {
       alert(`Error: ${error}`)
     }
 
+  }
+
+  async deleteRecipe(uid: string, recipeId: string){
+    const dbRef = ref(this.db, `recipes/${recipeId}`);
+    await remove(dbRef);
   }
 
 }

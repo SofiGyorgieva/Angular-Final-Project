@@ -64,4 +64,10 @@ export class RecipeDetailsComponent implements OnInit {
     }
   }
 
+  async deleteRecipe() {
+      await this.apiService.deleteRecipe(this.currentUserId, this.currentRecipe._id)
+      await this.apiService.removeFromUserFavorites(this.currentUserId, this.currentRecipe._id);
+      this.dialogRef.close('deleted');
+  }
+
 }
