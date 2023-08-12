@@ -6,13 +6,15 @@ import { SignOutComponent } from './sign-out/sign-out.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { AuthActivate } from '../core/guards/auth.active';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'user/sign-in', component: SignInComponent, },
   { path: 'user/sign-up', component: SignUpComponent},
   { path: 'user/sign-out', component: SignOutComponent, canActivate: [AuthActivate]},
   { path: 'user/my-favorites', component: FavoritesComponent, canActivate: [AuthActivate]},
-  { path: 'user/my-recipes', component: MyRecipesComponent, canActivate: [AuthActivate]}
+  { path: 'user/my-recipes', component: MyRecipesComponent, canActivate: [AuthActivate]},
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
