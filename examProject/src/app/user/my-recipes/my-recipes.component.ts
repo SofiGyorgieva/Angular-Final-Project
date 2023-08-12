@@ -43,7 +43,6 @@ export class MyRecipesComponent implements OnInit {
           }
         });
         this.dialogRef.afterClosed().subscribe(async (result: any) => {
-          console.log(`Dialog result: ${result}`);
           if (result === 'deleted'){
             await this.getUserRecipes();
             this.cdr.detectChanges(); 

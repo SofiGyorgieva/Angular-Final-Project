@@ -8,8 +8,8 @@
       <div *ngIf="this.firebaseService.isLoggedIn">
         <button class="favorites-button" (click)="toggleFavorite()">{{toggleFavoritesText}}</button>
       </div>
-      <div *ngIf="this.firebaseService.isLoggedIn">
-        <button class="favorites-button" (click)="deleteRecipe()">Delete Recipe</button>
+      <div *ngIf="this.currentUserId == this.currentRecipe.author">
+        <button class="delete-button" (click)="deleteRecipe()">Delete Recipe</button>
       </div>
     </div>
     <div class="card-media">

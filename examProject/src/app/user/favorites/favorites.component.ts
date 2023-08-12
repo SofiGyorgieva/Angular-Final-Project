@@ -49,7 +49,6 @@ export class FavoritesComponent implements OnInit {
         }
       });
       this.dialogRef.afterClosed().subscribe(async (result: any) => {
-        console.log(`Dialog result: ${result}`);
         if (result === 'deleted'){
           await this.getFavRecipes(this.currentUserId);
           this.cdr.detectChanges(); 
